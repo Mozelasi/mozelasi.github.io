@@ -1,0 +1,63 @@
+/* 基本样式 */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* 页面结构 */
+header, footer {
+  background: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+/* 主体内容 */
+main {
+  max-width: 800px;
+  margin: 2em auto;
+  background: white;
+  padding: 2em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.post-list li {
+  margin-bottom: 1em;
+}
+
+.post-list a {
+  font-size: 1.2em;
+  color: #007acc;
+  text-decoration: none;
+}
+
+.post-list a:hover {
+  text-decoration: underline;
+}
