@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozelasi的博客小屋</title>
+
+    <!-- 引入全局样式 -->
+    <link rel="stylesheet" href="/css/global.css"> <!-- 全局样式 -->
+    <link rel="stylesheet" href="/css/header.css"> <!-- 页眉样式 -->
+    <link rel="stylesheet" href="/css/footer.css"> <!-- 页脚样式 -->
+    <link rel="stylesheet" href="/css/main.css"> <!-- 主题样式 -->
+  <meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    <!-- 引入页眉 -->
+    <header>
+  <!-- 左侧艺术字标题 -->
+  <div class="header-left">
+    <h1 class="site-title">
+      <!-- 每个字母用 span 包裹，便于单独控制动画 -->
+      <span class="letter">M</span>
+      <span class="letter">o</span>
+      <span class="letter">z</span>
+      <span class="letter">e</span>
+      <span class="letter">l</span>
+      <span class="letter">a</span>
+      <span class="letter">s</span>
+      <span class="letter">i</span>
+      <span class="letter">的</span>
+      <span class="letter">博</span>
+      <span class="letter">客</span>
+      <span class="letter">小</span>
+      <span class="letter">屋</span>
+    </h1>
+  </div>
+
+  <!-- 右侧导航和搜索框 -->
+  <div class="header-right">
+    <!-- 导航链接 -->
+    <nav>
+      <a href="/" class="nav-link">总览</a>
+      <a href="/airport-recommendations" class="nav-link">机场推荐</a>
+      <a href="/links" class="nav-link">友链</a>
+    </nav>
+    <!-- 搜索框 -->
+    <form action="/search" method="get" class="search-form">
+      <input type="text" name="q" placeholder="搜索..." class="search-input">
+      <button type="submit" class="search-button">搜索</button>
+    </form>
+  </div>
+</header>
+
+
+    <!-- 页面主容器：设置为flex布局，确保页脚始终在底部 -->
+    <div class="container">
+      <!-- 主体内容区域：占据剩余空间 -->
+      <main>
+        <!-- themes/mytheme/layout/index.ejs -->
+<h2>📚 最新文章</h2>
+
+
+  <p>暂无文章发布。</p>
+  <!-- 渲染页面内容 -->
+      </main>
+
+    <!-- 页脚区域：始终位于页面底部 -->
+    <div class="footer">
+  <!-- runtime.ejs: 用于显示建站运行时间 -->
+<p id="runtime-text">本站运行中...</p>
+
+<script>
+  // ======================
+  // 运行时间显示模块
+  // ======================
+
+  // 设置建站时间（请根据实际情况修改）
+  const startTime = new Date("2025-08-30T00:00:00Z"); // UTC时间
+
+  // 更新运行时间的函数
+  function updateRuntime() {
+    const now = new Date();  // 当前时间（本地时间）
+
+    // 获取当前时间与建站时间的时间差（毫秒）
+    let diff = now - startTime;
+
+    // 计算天数、小时、分钟和秒
+    const seconds = Math.floor(diff / 1000) % 60;  // 秒
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;  // 分钟
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;  // 小时
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));  // 天数
+
+    // 构造显示的文字
+    let text = "本站已运行：";
+    text += `${days} 天 `;
+    text += `${String(hours).padStart(2, '0')} 小时 `;
+    text += `${String(minutes).padStart(2, '0')} 分钟 `;
+    text += `${String(seconds).padStart(2, '0')} 秒`;
+
+    // 更新页面中的文本
+    document.getElementById("runtime-text").innerText = text;
+  }
+
+  // 页面加载时显示运行时间，并每秒更新一次
+  updateRuntime();
+  setInterval(updateRuntime, 1000);
+</script>
+  <!-- 运行时间模块 -->
+
+  <p id="footer-slogan">加载中...</p>
+
+<script>
+  // 本地中英对照宣传语备选
+  const localSlogans = [
+    {cn: "努力不一定成功，但放弃一定失败。", en: "Effort doesn't guarantee success, but giving up guarantees failure."},
+    {cn: "不积跬步，无以至千里。", en: "A journey of a thousand miles begins with a single step."},
+    {cn: "今天的努力，成就明天的辉煌。", en: "Today's effort builds tomorrow's glory."},
+    {cn: "行胜于言。", en: "Actions speak louder than words."},
+    {cn: "只要路是对的，就不怕路远。", en: "If the path is right, don't fear the distance."},
+    {cn: "坚持就是胜利。", en: "Persistence is victory."},
+    {cn: "让自己进步，因为没人会替你做这事。", en: "Push yourself, because no one else is going to do it for you."},
+  ];
+
+  // 随机选择一个本地宣传语
+  function getRandomSlogan() {
+    return localSlogans[Math.floor(Math.random() * localSlogans.length)];
+  }
+
+  // 更新展示的宣传语（包括中文和英文）
+  function displaySlogan(slogan) {
+    const sloganText = `${slogan.cn} / ${slogan.en}`;
+    document.getElementById('footer-slogan').innerText = sloganText;
+  }
+
+  // 使用 fetch 获取在线宣传语，带超时机制
+  async function fetchSlogan() {
+    const apiUrl = 'https://type.fit/api/quotes';  // 更换为可用的 API 地址
+
+    try {
+      const response = await fetch(apiUrl, { timeout: 3000 });
+      if (!response.ok) throw new Error('API请求失败');
+      const data = await response.json();
+
+      // 随机从 API 中选择一句话
+      const randomQuote = data[Math.floor(Math.random() * data.length)];
+      const local = getRandomSlogan();
+      
+      // 如果 API 返回英文为空或不存在，则使用本地英文句子
+      const slogan = {
+        cn: local.cn,
+        en: randomQuote.text || local.en  // 如果 API 返回的英文为空，使用本地英文句子
+      };
+
+      displaySlogan(slogan);
+    } catch (error) {
+      console.warn('获取在线宣传语失败，使用本地句子', error);
+      displaySlogan(getRandomSlogan());  // 使用本地宣传语
+    }
+  }
+
+  // 页面加载时尝试获取宣传语
+  fetchSlogan();
+</script>
+   <!-- 随机宣传语模块 -->
+
+  <p id="footer-copyright">
+    © <span id="current-year"></span> 我的网站。
+  </p>
+</div>
+
+<script>
+  // 动态年份设置
+  document.getElementById('current-year').innerText = new Date().getFullYear();
+</script>
+  <!-- 引入页脚 -->
+    </div>
+  </body>
+</html>

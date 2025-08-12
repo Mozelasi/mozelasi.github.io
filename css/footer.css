@@ -1,0 +1,38 @@
+/* ========== 页脚样式 ========== */
+
+.footer {
+  background: #f7f7f7; /* 浅灰色背景，简洁 */
+  color: #555;         /* 深灰色文字 */
+  text-align: center;
+  padding: 6px 0;      /* 稍微减少内边距 */
+  font-size: 0.8em;    /* 减小字体大小 */
+  line-height: 0.6;    /* 增加行高 */
+  border-top: 1px solid #ddd;  /* 浅灰色边框，避免视觉干扰 */
+  margin-top: auto;    /* 页脚始终位于底部 */
+}
+
+/* 运行时间和随机宣传语简化动画 */
+#footer-slogan, #runtime-text {
+  font-size: 0.95rem;   /* 适中的字体大小 */
+  margin: 8px 0;
+  opacity: 0.6;         /* 稍微降低透明度 */
+  transition: opacity 0.2s ease; /* 简单的透明度过渡 */
+}
+
+#footer-slogan:hover, #runtime-text:hover {
+  opacity: 1;  /* 鼠标悬停时透明度增加 */
+}
+
+/* 版权文字动画 */
+#footer-copyright {
+  font-size: 0.8rem;    /* 调整版权字体大小 */
+  color: #777;          /* 更柔和的文字颜色 */
+  margin-top: 10px;
+  opacity: 0.8;         /* 初始透明度 */
+  transition: opacity 0.2s ease, color 0.2s ease; /* 透明度和颜色变化的简单过渡 */
+}
+
+#footer-copyright:hover {
+  opacity: 1;           /* 鼠标悬停时增加透明度 */
+  color: #47a4eb;          /* 鼠标悬停时恢复颜色 */
+}
